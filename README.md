@@ -1,0 +1,23 @@
+# sivuraimo-frontend-skills
+
+Общие правила и скиллы Claude Code для фронтенд-проектов Sivuraimo.
+
+| Файл | Что делает |
+|---|---|
+| `CLAUDE.md` | Глобальные правила: русский, git (без пуша, коммит по команде), деплой, CSS-правки, Chrome |
+| `skills/start-task` | Выбор ветки в начале задачи: текущая или отдельная от staging |
+| `skills/commit-to-staging` | «Коммить»: pull, коммит, перенос в staging, удаление таск-ветки |
+| `skills/linear-task` | Работа по задаче из Linear (ID или ссылка) и создание задач |
+| `skills/figma-to-code` | Правила верстки из Figma |
+| `skills/interaction-states` | hover / active / focus для мыши и тача |
+
+## Установка
+
+```
+git clone git@github.com:sivuraimo/sivuraimo-frontend-skills.git ~/projects/sivuraimo-frontend-skills
+~/projects/sivuraimo-frontend-skills/install.sh
+```
+
+`install.sh` ставит симлинки в `~/.claude`: правки в репо сразу работают во всех проектах. Существующие файлы с теми же именами переименовываются в `*.backup-<дата>`.
+
+Специфика проекта (команда и проект в Linear, стек, единицы, команды запуска) остаётся в `CLAUDE.md` самого проекта.
