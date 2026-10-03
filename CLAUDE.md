@@ -17,6 +17,10 @@ Deploy (hosting, serverless functions, `sanity deploy` and the like) only when t
 
 When the user names a new value for a CSS property, change exactly that number in place and keep the construct (gradient type, units, property). If the target is ambiguous, ask one short question.
 
-## Browser
+## Browser checks and background processes
 
-The Chrome that chrome-devtools-mcp launches (profile `~/.cache/chrome-devtools-mcp/chrome-profile`) is a separate copy. Close its pages and the browser as soon as a check is done. Another session's instance stays open while it is active.
+Every dev server, watcher and browser instance a session starts is the session's to stop. Note each PID and port as you start it.
+
+- When a browser check or automated test is done, close its pages and the browser instance: the Chrome that chrome-devtools-mcp launches (profile `~/.cache/chrome-devtools-mcp/chrome-profile`, a separate copy), Playwright or Puppeteer browsers, tabs you opened in the user's own Chrome.
+- Before reporting the task done, stop the servers and background processes you started (`astro dev stop`, `kill <pid>`), then check with `lsof -nP -iTCP -sTCP:LISTEN` that none of your ports are still listening. Done means nothing you started is left running.
+- Processes, ports and browser instances of another active session stay running.

@@ -3,7 +3,8 @@ set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
-mkdir -p "$CLAUDE_DIR/skills"
+CODEX_DIR="$HOME/.codex"
+mkdir -p "$CLAUDE_DIR/skills" "$CODEX_DIR/skills"
 
 link() {
   local src="$1" dst="$2"
@@ -20,7 +21,9 @@ link() {
 }
 
 link "$REPO/CLAUDE.md" "$CLAUDE_DIR/CLAUDE.md"
+link "$REPO/CLAUDE.md" "$CODEX_DIR/AGENTS.md"
 for skill in "$REPO"/skills/*/; do
   name="$(basename "$skill")"
   link "${skill%/}" "$CLAUDE_DIR/skills/$name"
+  link "${skill%/}" "$CODEX_DIR/skills/$name"
 done

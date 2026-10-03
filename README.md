@@ -1,10 +1,10 @@
 # sivuraimo-frontend-skills
 
-Общие правила и скиллы Claude Code для фронтенд-проектов Sivuraimo.
+Общие правила и скиллы Claude Code и Codex для фронтенд-проектов Sivuraimo.
 
 | Файл | Что делает |
 |---|---|
-| `CLAUDE.md` | Глобальные правила: русский, git (без пуша, коммит по команде), деплой, CSS-правки, Chrome |
+| `CLAUDE.md` | Глобальные правила: русский, git (без пуша, коммит по команде), деплой, CSS-правки, уборка браузеров и фоновых процессов. Для Codex это `~/.codex/AGENTS.md` |
 | `skills/start-task` | Выбор ветки в начале задачи: текущая или отдельная от staging |
 | `skills/commit-to-staging` | «Коммить»: pull, коммит, перенос в staging, удаление таск-ветки |
 | `skills/linear-task` | Работа по задаче из Linear (ID или ссылка) и создание задач |
@@ -19,7 +19,7 @@ git clone git@github.com:sivuraimo/sivuraimo-frontend-skills.git ~/projects/sivu
 ~/projects/sivuraimo-frontend-skills/install.sh
 ```
 
-`install.sh` ставит симлинки в `~/.claude`: правки в репо сразу работают во всех проектах. Существующие файлы с теми же именами переименовываются в `*.backup-<дата>`.
+`install.sh` ставит симлинки в `~/.claude` и `~/.codex`: правки в репо сразу работают во всех проектах. Существующие файлы с теми же именами переименовываются в `*.backup-<дата>`.
 
 ## После правок
 
@@ -27,8 +27,8 @@ git clone git@github.com:sivuraimo/sivuraimo-frontend-skills.git ~/projects/sivu
 |---|---|
 | Поправил существующий скилл или `CLAUDE.md` | Ничего, работает с новой сессии |
 | Добавил новую папку в `skills/` | `./install.sh` |
-| Переименовал папку скилла | `rm ~/.claude/skills/<старое-имя>` и `./install.sh` |
-| Удалил папку скилла | `rm ~/.claude/skills/<имя>` |
+| Переименовал папку скилла | `rm ~/.claude/skills/<старое-имя> ~/.codex/skills/<старое-имя>` и `./install.sh` |
+| Удалил папку скилла | `rm ~/.claude/skills/<имя> ~/.codex/skills/<имя>` |
 | Поменял `install.sh` | `./install.sh` |
 
 На другой машине после `git pull` то же самое: `install.sh` нужен только в случаях из таблицы.
